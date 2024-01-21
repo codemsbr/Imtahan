@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Mk6DZdPg0P/3ju8ozeeLezLtksB5Y0srfe2e5Nk9YoA=",
+  "Hash": "8S647cdddxy1LjMV/MrpofY3cDiEmwFPYgNlX6Rin8g=",
   "Source": "Imtahan",
   "BasePath": "_content/Imtahan",
   "Mode": "Default",
@@ -31686,6 +31686,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\lz2prlf1tbf.png"
+    },
+    {
+      "Identity": "C:\\Users\\Birinci Novbe\\source\\repos\\Imtahan\\Imtahan\\wwwroot\\assets\\img\\System.Func`1[System.Guid]Screenshot (5).png",
+      "SourceId": "Imtahan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Birinci Novbe\\source\\repos\\Imtahan\\Imtahan\\wwwroot\\",
+      "BasePath": "_content/Imtahan",
+      "RelativePath": "assets/img/System.Func`1[System.Guid]Screenshot (5).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\System.Func`1[System.Guid]Screenshot (5).png"
     },
     {
       "Identity": "C:\\Users\\Birinci Novbe\\source\\repos\\Imtahan\\Imtahan\\wwwroot\\assets\\img\\xperia-z4-tablet-black-1240x840-a07acf270af4d6789d0e83aea747b064.png",

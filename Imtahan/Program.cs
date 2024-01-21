@@ -18,28 +18,28 @@ namespace Imtahan
             builder.Services.AddDbContext<MyDbContext>(opt =>
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"));
-             }).AddIdentity<AppUser,IdentityRole>(opt=>
-             {
-                 opt.Password.RequiredLength = 6;
-                 opt.Password.RequireNonAlphanumeric = true;
-                 opt.User.RequireUniqueEmail = true;
-                 opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-                 opt.SignIn.RequireConfirmedEmail = false;
-             }).AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();
-
-            builder.Services.ConfigureApplicationCookie(_ =>
+            }).AddIdentity<AppUser, IdentityRole>(opt =>
             {
-                _.LoginPath = new PathString("/Auth/Login");
-                _.LogoutPath = new PathString("/Auth/Logout");
-                _.Cookie = new CookieBuilder
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireNonAlphanumeric = true;
+                opt.User.RequireUniqueEmail = true;
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+                opt.SignIn.RequireConfirmedEmail = false;
+            }).AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = new PathString("/Auth/Login");
+                opt.LogoutPath = new PathString("/Auth/Logout");
+                opt.Cookie = new CookieBuilder
                 {
                     Name = "AspNetCoreIdentityExampleCookie",
                     HttpOnly = true,
                     SameSite = SameSiteMode.Lax,
                     SecurePolicy = CookieSecurePolicy.Always
                 };
-                _.SlidingExpiration = true;
-                _.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                opt.SlidingExpiration = true;
+                opt.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             });
             var app = builder.Build();
 
@@ -61,7 +61,7 @@ namespace Imtahan
 
             app.MapControllerRoute(
             name: "areas",
-            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+            pattern: "{area:exists}/{controller=Profession}/{action=Index}/{id?}"
           );
 
             app.MapControllerRoute(

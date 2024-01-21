@@ -3,6 +3,7 @@ using Imtahan.Areas.Admin.ViewModels.Professions;
 using Imtahan.DbContexts;
 using Imtahan.Helpers;
 using Imtahan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Imtahan.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles="Admin")]
     public class EmployeeController : Controller
     {
         MyDbContext _db { get; set; }
@@ -59,6 +61,10 @@ namespace Imtahan.Areas.Admin.Controllers
                 Name = create.Name,
                 ImgUrl = await create.ImgUrl.SaveAsync(PathConstant.ImgUrl),
                 ProfessionId = create.ProfessionId,
+                xUrl= create.xUrl,
+                facebookUrl = create.facebookUrl,
+                Decription = create.Decription,
+                LinkUrl = create.LinkUrl,
             });
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -105,6 +111,10 @@ namespace Imtahan.Areas.Admin.Controllers
             item.ProfessionId = create.ProfessionId;
             item.Name = create.Name;
             item.ImgUrl = await create.ImgUrl.SaveAsync(PathConstant.ImgUrl);
+            item.xUrl = create.xUrl;
+            item.LinkUrl= create.LinkUrl;
+            item.facebookUrl = create.facebookUrl;
+            create.Decription = create.Decription;
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -118,5 +128,13 @@ namespace Imtahan.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Pagination(int count,int page)
+        {
+            return ViewComponent("Employee",new
+            {
+                count=count,
+                page=page
+            });
+        }
     }
 }

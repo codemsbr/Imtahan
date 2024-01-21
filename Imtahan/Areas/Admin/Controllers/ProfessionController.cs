@@ -1,6 +1,7 @@
 ﻿using Imtahan.Areas.Admin.ViewModels.Professions;
 using Imtahan.DbContexts;
 using Imtahan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -8,6 +9,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Imtahan.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin")]
     public class ProfessionController : Controller
     {
         MyDbContext _db { get; }

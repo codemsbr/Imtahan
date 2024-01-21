@@ -1,19 +1,16 @@
 ﻿using Imtahan.Models;
-using System.ComponentModel.DataAnnotations;
 
-namespace Imtahan.Areas.Admin.ViewModels.Employee
+namespace Imtahan.ViewModels.Home
 {
-    public class EmployeeUpdateVm
+    public class EmployeeListItemVm
     {
-        [MinLength(3), MaxLength(16)]
         public string Name { get; set; }
-        [MinLength(10), MaxLength(64)]
+        public string ImgUrl { get; set; }
         public string Decription { get; set; }
         public string facebookUrl { get; set; }
         public string LinkUrl { get; set; }
         public string xUrl { get; set; }
-        public IFormFile ImgUrl { get; set; }
-        public int ProfessionId { get; set; }
+
         public Profession? Profession { get; set; }
     }
 }

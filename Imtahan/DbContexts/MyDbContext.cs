@@ -22,7 +22,7 @@ namespace Imtahan.DbContexts
                 builder.Entity<IdentityRole>().HasData(new IdentityRole
                 {
                     Name = item.ToString(),
-                    NormalizedName = item.ToString()
+                    NormalizedName = item.ToString().ToUpper()
                 });
             }
             base.OnModelCreating(builder);

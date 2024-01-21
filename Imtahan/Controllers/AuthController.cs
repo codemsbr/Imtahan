@@ -45,8 +45,9 @@ namespace Imtahan.Controllers
                     return View(register);
                 }
             }
-
-            var roleResult = await _um.AddToRoleAsync(user,Roles.Admin.ToString());
+            //Sifre => Salam!123
+            //var roleResult = await _um.AddToRoleAsync(user,Roles.Admin.ToString());
+            var roleResult = await _um.AddToRoleAsync(user, Roles.Member.ToString());
             if (!roleResult.Succeeded)
             {
                 ModelState.AddModelError(" "," ");

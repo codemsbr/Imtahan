@@ -7,7 +7,11 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">ImgUrl</th>
+            <th scope="col">Decription</th>
             <th scope="col">ProfessionName</th>
+            <th scope="col">FacebookUrl</th>
+            <th scope="col">LinkUrl</th>
+            <th scope="col">xUrl</th>
             <th scope="col" colspan="2">Action</th>
         </tr>
     </thead>
@@ -20,7 +24,11 @@
                     <td>@item.Id</td>
                     <td>@item.Name</td>
                     <td><img src="~/@item.ImgUrl"/></td>
+                    <td>@item.Decription</td>
                     <td>@item.Profession.Name</td>
+                    <td>@item.facebookUrl</td>
+                    <td>@item.LinkUrl</td>
+                    <td>@item.xUrl</td>
                     <td><a asp-action="Update" class="btn btn-warning" asp-route-id="@item.Id">Update</a></td>
                     <td><a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a></td>
                 </tr>

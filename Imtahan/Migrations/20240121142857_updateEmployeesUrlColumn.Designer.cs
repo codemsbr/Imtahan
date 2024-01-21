@@ -4,6 +4,7 @@ using Imtahan.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Imtahan.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121142857_updateEmployeesUrlColumn")]
+    partial class updateEmployeesUrlColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,17 +192,24 @@ namespace Imtahan.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e58974f1-b0cb-4a99-98ea-78d5619561c4",
-                            ConcurrencyStamp = "b2f9a845-217a-4e59-8cca-e1ac3ebf619a",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "867fd619-a229-41c6-b0b1-32b9ed3a8317",
+                            ConcurrencyStamp = "277b43c9-cf19-4170-88bb-8a8e360c8b4b",
+                            Name = "SuperAdmin",
+                            NormalizedName = "SuperAdmin"
                         },
                         new
                         {
-                            Id = "cc8e8d3a-55dd-4a14-bf77-37084bc9277f",
-                            ConcurrencyStamp = "3b12e3ab-9a57-4ace-a8e2-4e4222b98ab3",
+                            Id = "bff046ab-0291-4d14-b22a-ec34ef1e7dcf",
+                            ConcurrencyStamp = "2d5c8ce8-4856-4649-8761-f3385759dfc2",
+                            Name = "Admin",
+                            NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "66471a19-0b7e-4315-a335-aaa89f26b40f",
+                            ConcurrencyStamp = "3ae6fa7b-5673-44a0-8fb1-59066d14a669",
                             Name = "Member",
-                            NormalizedName = "MEMBER"
+                            NormalizedName = "Member"
                         });
                 });
 

@@ -4,6 +4,7 @@ using Imtahan.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Imtahan.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121143846_updat")]
+    partial class updat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,15 +192,15 @@ namespace Imtahan.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e58974f1-b0cb-4a99-98ea-78d5619561c4",
-                            ConcurrencyStamp = "b2f9a845-217a-4e59-8cca-e1ac3ebf619a",
+                            Id = "5b73dcbc-eb6e-48fd-a7e5-37e3e14fd1cc",
+                            ConcurrencyStamp = "4dfbd657-a4c3-4e85-b600-2aa55caee683",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "cc8e8d3a-55dd-4a14-bf77-37084bc9277f",
-                            ConcurrencyStamp = "3b12e3ab-9a57-4ace-a8e2-4e4222b98ab3",
+                            Id = "eee5903a-1576-44c2-9117-8d483d59775b",
+                            ConcurrencyStamp = "be3d1daf-70d1-46c5-8b96-68769a03b26f",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
