@@ -1,3 +1,10 @@
+using Imtahan.DbContexts;
+using Imtahan.Helpers;
+using Imtahan.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace Imtahan
 {
     public class Program
@@ -8,7 +15,32 @@ namespace Imtahan
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<MyDbContext>(opt =>
+            {
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"));
+             }).AddIdentity<AppUser,IdentityRole>(opt=>
+             {
+                 opt.Password.RequiredLength = 6;
+                 opt.Password.RequireNonAlphanumeric = true;
+                 opt.User.RequireUniqueEmail = true;
+                 opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+                 opt.SignIn.RequireConfirmedEmail = false;
+             }).AddEntityFrameworkStores<MyDbContext>().AddDefaultTokenProviders();
 
+            builder.Services.ConfigureApplicationCookie(_ =>
+            {
+                _.LoginPath = new PathString("/Auth/Login");
+                _.LogoutPath = new PathString("/Auth/Logout");
+                _.Cookie = new CookieBuilder
+                {
+                    Name = "AspNetCoreIdentityExampleCookie",
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.Lax,
+                    SecurePolicy = CookieSecurePolicy.Always
+                };
+                _.SlidingExpiration = true;
+                _.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,12 +56,19 @@ namespace Imtahan
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+          );
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            PathConstant.RootPath = app.Environment.WebRootPath;
             app.Run();
         }
     }
